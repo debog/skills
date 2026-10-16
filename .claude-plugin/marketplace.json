@@ -9,13 +9,21 @@
     {
       "name": "bib-audit",
       "description": "Flag hallucinated references, authors and bib items in any paper — your own draft before submitting, or one you are reviewing — and correct badly formatted ones. Resolves every reference against Crossref, arXiv, DataCite and Semantic Scholar, then ranks findings so integrity problems sort above formatting nits.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Isaac Corley"
       },
       "category": "productivity",
       "keywords": ["bibtex", "citations", "references", "latex", "peer-review", "hallucination"],
       "source": "./plugins/bib-audit"
+    },
+    {
+      "name": "research-paper-figures",
+      "version": "1.0.0",
+      "description": "Publication figures in TikZ/pgfplots and Python, with reusable serif styling, visual examples, and takeaway-first captions.",
+      "keywords": ["figures", "matplotlib", "tikz", "pgfplots", "latex", "research"],
+      "category": "productivity",
+      "source": "./plugins/research-paper-figures"
     }
   ]
 }
