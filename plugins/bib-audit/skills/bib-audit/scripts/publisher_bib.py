@@ -204,8 +204,8 @@ def name_split(raw):
     if (r.startswith('{') and r.endswith('}')) or (',' not in r and len(r.split()) >= 3):
         return fold(r), ''
     if ',' in r:
-        fam, _, giv = r.partition(',')
-        return fold(fam), delatex(giv)
+        parts = [x.strip() for x in r.split(',')]
+        return fold(parts[0]), delatex(parts[-1])
     toks = delatex(r).split()
     return fold(toks[-1]), ' '.join(toks[:-1])
 
