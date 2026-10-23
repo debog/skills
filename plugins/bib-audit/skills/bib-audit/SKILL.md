@@ -174,11 +174,11 @@ The audit finds *wrong metadata*. It cannot tell you *why* the metadata is wrong
 
 1. Run the audit. Triage by verdict per the table above, `[FABRICATED]` first.
 2. For each `[MISMATCH]`: rerun with `--key <key> --show-bibtex` — it prints the registrar's BibTeX (Crossref content negotiation, from the publisher's deposit) with the existing citation key preserved, ready to paste.
-3. Download the publisher's own citation export (the "Cite" / "Export citation" file on the article page) wherever one exists, and diff it against each entry:
+3. Download the publisher's own citation export (the "Cite" / "Export citation" file on the article page) wherever one exists, and diff it against each entry. BibTeX when offered; otherwise RIS, EndNote, RefWorks, MEDLINE, or CSL-JSON, which the script converts to BibTeX. A plain-text citation is free text: convert it by reading it, like a reference list (see "Getting references out of a PDF").
 
    ```bash
    python3 scripts/publisher_bib.py --bib refs.bib --save pubbib          # every entry with a DOI or eprint
-   python3 scripts/publisher_bib.py --file ~/Downloads/x.bib --bib refs.bib --key somekey2024
+   python3 scripts/publisher_bib.py --file ~/Downloads/x.ris --bib refs.bib --key somekey2024   # any format
    ```
 
    It uses known endpoints (Springer Nature/BMC/Springer, PLOS, Copernicus, arXiv), then the export link on the landing page (Frontiers and others). Sites behind a bot check (Elsevier, Wiley, NEJM, PNAS, APS, OUP, IEEE, ACM) answer 403: save the export from the browser and pass it with `--file`. Settle each `DIFF` against the PDF (byline for authors, header or footer for volume, issue, pages), never by taking the export's side; see the gotcha below.
